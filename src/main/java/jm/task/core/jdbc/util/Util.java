@@ -13,11 +13,14 @@ public class Util {
 
 
 
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+    public static Connection getConnection() {
         Connection connection = null;
-        Class.forName(DB_DRIVER);
-        connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-
+        try {
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            Class.forName(DB_DRIVER);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         return connection;
     }
 }

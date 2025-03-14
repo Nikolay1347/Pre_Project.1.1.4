@@ -17,13 +17,13 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     }
 
     public void createUsersTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS User (id CHAR(5), name CHAR(20) NOT NULL, " +
+         String sql = "CREATE TABLE IF NOT EXISTS User (id CHAR(5), name CHAR(20) NOT NULL, " +
                 "lastName CHAR(20), age CHAR(3), PRIMARY KEY (id))";
 
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement();) {
             statement.executeUpdate(sql);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -34,7 +34,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -48,7 +48,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement.setString(3, lastName);
             preparedStatement.setByte(4, age);
             preparedStatement.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -58,7 +58,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -78,8 +78,8 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
                 user.setAge(Byte.valueOf(resultSet.getString("age")));
                 result.add(user);
                 System.out.println(user.toString());
-                }
-        } catch (SQLException | ClassNotFoundException e) {
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
@@ -89,7 +89,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement()){
             statement.executeUpdate("DELETE FROM User");
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

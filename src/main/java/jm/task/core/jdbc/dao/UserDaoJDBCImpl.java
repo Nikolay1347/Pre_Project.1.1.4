@@ -16,7 +16,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
         String sql = "CREATE TABLE IF NOT EXISTS User (id INT NOT NULL AUTO_INCREMENT, name CHAR(20) NOT NULL, " +
                 "lastName CHAR(20), age CHAR(3), PRIMARY KEY (id))";
-
         try (Connection connection = Util.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
@@ -50,20 +49,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
-//    @Override
-//    public void saveUser(String name, String lastName, byte age) {
-//        String sql = "INSERT INTO User (id, name, lastName, age) VALUES (?, ?, ?, ?)";
-//        try (Connection connection = Util.getConnection();
-//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-//            preparedStatement.setLong(1, ++id);
-//            preparedStatement.setString(2, name);
-//            preparedStatement.setString(3, lastName);
-//            preparedStatement.setByte(4, age);
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
     @Override
     public void removeUserById (long id) {

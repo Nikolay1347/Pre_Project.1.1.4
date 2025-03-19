@@ -10,40 +10,40 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private static final UserDao JDBC = new UserDaoJDBCImpl();
-    private static final UserDao Hibernate = new UserDaoHibernateImpl();
+    private static final UserDao HIBERNATE = new UserDaoHibernateImpl();
 
     @Override
     public void createUsersTable() {
 
-        Hibernate.createUsersTable();
+        HIBERNATE.createUsersTable();
     }
 
     @Override
     public void dropUsersTable() {
 
-        Hibernate.dropUsersTable();
+        HIBERNATE.dropUsersTable();
     }
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
 
-        Hibernate.saveUser(name,lastName,age);
+        HIBERNATE.saveUser(name,lastName,age);
     }
     @Override
     public void removeUserById(long id) {
 
-        Hibernate.removeUserById(id);
+        HIBERNATE.removeUserById(id);
     }
 
     @Override
     public List<User> getAllUsers() {
 
-        return Hibernate.getAllUsers();
+        return HIBERNATE.getAllUsers();
     }
 
     @Override
     public void cleanUsersTable() {
 
-        Hibernate.cleanUsersTable();
+        HIBERNATE.cleanUsersTable();
     }
 }

@@ -35,40 +35,7 @@ public class Util {
     }
 
 
-   // private static SessionFactory sessionFactory;
-//    public static SessionFactory getSessionFactory() {
-//        if (sessionFactory == null) {
-//            try {
-//                Configuration configuration = new Configuration();
-//
-//                // Hibernate settings equivalent to hibernate.cfg.xml's properties
-//                Properties settings = new Properties();
-//                settings.put(Environment.DRIVER, DB_DRIVER);
-//                settings.put(Environment.URL, DB_URL);
-//                settings.put(Environment.USER, DB_USERNAME);
-//                settings.put(Environment.PASS, DB_PASSWORD);
-//                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-//
-//               // settings.put(Environment.SHOW_SQL, "true");
-//
-//                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-//
-//               // settings.put(Environment.HBM2DDL_AUTO, "create-drop");
-//
-//                configuration.setProperties(settings);
-//
-//                configuration.addAnnotatedClass(User.class);
-//
-//                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-//                        .applySettings(configuration.getProperties()).build();
-//
-//                sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return sessionFactory;
-//    }
+
 
 
     public static SessionFactory getSessionFactory() {
@@ -81,17 +48,10 @@ public class Util {
                 settings.setProperty(Environment.USER, DB_USERNAME);
                 settings.setProperty(Environment.PASS, DB_PASSWORD);
 
-               // settings.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-
-               // settings.setProperty(Environment.SHOW_SQL, "true");
-               // settings.setProperty("hibernate.format_sql", "true");
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
-
-
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
-
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -99,5 +59,4 @@ public class Util {
         }
         return sessionFactory;
     }
-
 }
